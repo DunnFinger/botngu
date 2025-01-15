@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TatsuYTB</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            position: relative;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; 
+            object-fit: cover;
+        }
+
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; 
+            object-fit: cover;
+        }
+
+        #audioPlayer {
+            margin-bottom: 20px;
+            width: 300px;
+        }
+        
+        }
+    </style>
+</head>
+<body>
+    <video class="video-background" autoplay muted loop onended="this.play()">
+        <source src="https://files.catbox.moe/gw011g.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    
+    <audio controls id="audioPlayer">
+        <source id="audioSource" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    
+    <button onclick="changeSong()">Chuyển bài hát</button>
+
+    <script>
+        var audioPlayer = document.getElementById('audioPlayer');
+        var songs = ['https://files.catbox.moe/8mx6py.mp3',
+                    'https://files.catbox.moe/a3sjxi.mp3',
+                    'https://files.catbox.moe/8kr0w7.mp3',
+                    'https://files.catbox.moe/vlgsbu.mp3',
+                    'https://files.catbox.moe/jvasx9.mp3',
+                    'https://files.catbox.moe/b7xl8a.mp3',
+                    'https://files.catbox.moe/d0ow60.mp3',
+                    'https://files.catbox.moe/ry2a6h.mp3',
+                    'https://files.catbox.moe/w1497h.mp3',
+                    'https://files.catbox.moe/95hvis.mp3',
+                    'https://files.catbox.moe/kvnfvq.mp3',
+                    'https://files.catbox.moe/7c0o9w.mp3',
+                    'https://files.catbox.moe/1ymxdv.mp3',
+                    'https://files.catbox.moe/fu4xbc.mp3'
+                    ];
+
+        
+        function changeSong() {
+            var randomIndex = Math.floor(Math.random() * songs.length);
+            audioPlayer.src = songs[randomIndex];
+            audioPlayer.play();
+        }
+        audioPlayer.addEventListener('ended', changeSong);
+        window.onload = function() {
+            changeSong();
+        };
+    </script>
+</body>
+</html>
